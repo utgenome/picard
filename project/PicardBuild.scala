@@ -49,6 +49,7 @@ object PicardBuild extends Build {
     },
     parallelExecution := true,
     parallelExecution in Test := false,
+    autoScalaLibrary := false,
     crossPaths := false,
     javacOptions in Compile := defaultJavacOptions ++ Seq("-target", "1.6", "-proc:none"),
     javacOptions in Compile in doc := defaultJavacOptions ++ Seq("-windowtitle", "Picard API", "-linkoffline", "http://docs.oracle.com/javase/6/docs/api/", "http://docs.oracle.com/javase/6/docs/api/"),
@@ -121,7 +122,6 @@ object PicardBuild extends Build {
     val testLib = Seq(
       "junit" % "junit" % "4.10" % "provided",
       "org.testng" % "testng" % "5.5" % "provided"
-      //"org.scalatest" %% "scalatest" % "2.0.M5b" % "test"
     )
 
 
