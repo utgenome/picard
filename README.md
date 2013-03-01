@@ -1,7 +1,7 @@
 Picard 
 ===
 
-This project is a clone of Picard library <http://picard.sourceforge.net/>, a useful tool for managing SAM/BAM format data in Java/Scala. Unfortunately, however, it has not been available from Maven's central repository. In order to use picard with Maven and sbt projects, we created a new build script for Picard, and now the Picard library becomes available in Maven and sbt projects.
+This project is a clone of Picard library <http://picard.sourceforge.net/>, a useful tool for managing SAM/BAM format data in Java/Scala. Unfortunately, however, Picard has not been available from Maven's central repository. In order to use Picard with Maven and sbt projects, we created a new build script for Picard, and now the Picard library becomes available in Maven and sbt projects.
 
 ## Usage
 To use picard, add the folloing settings to your project files:
