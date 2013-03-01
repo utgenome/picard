@@ -31,14 +31,19 @@ Picard comamnd-line tools will be installed to `$(HOME)/local/bin`. Configure yo
 
        export PATH = $HOME/local/bin:$PATH
 
-## Development notes
+## Usage
 
-### Sync with the original SVN repository
-This is an unofficial clone of Picard library for reading SAM/BAM files. <http://picard.sourceforge.net/>
+Add the folloing settings to your project files:
+### Maven 
+        <dependency>
+            <groupId>org.utgenome.thirdparty</groupId>
+            <artifactId>picard</artifactId>
+            <version>1.86p</version>
+        </dependency>
 
-This project uses sbt to build Picard to enable deployiment of Picard's jars to the Maven central repository.
+### Scala (sbt)
 
-
+    libraryDependencies += "org.utgenome.thirdparty" % "picard" % "1.86p"
 
 ## Development notes
 
