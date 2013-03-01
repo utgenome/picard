@@ -50,7 +50,7 @@ object PicardBuild extends Build {
     parallelExecution := true,
     parallelExecution in Test := false,
     crossPaths := false,
-    javacOptions in Compile := defaultJavacOptions ++ Seq("-target", "1.6"),
+    javacOptions in Compile := defaultJavacOptions ++ Seq("-target", "1.6", "-proc:none"),
     javacOptions in Compile in doc := defaultJavacOptions ++ Seq("-windowtitle", "Picard API", "-linkoffline", "http://docs.oracle.com/javase/6/docs/api/", "http://docs.oracle.com/javase/6/docs/api/"),
     pomExtra := {
       <url>http://utgenome.org/</url>
@@ -86,10 +86,12 @@ object PicardBuild extends Build {
 
   private val dependentScope = "test->test;compile->compile"
 
-  private val srcFilter = new sbt.FileFilter {
+  private def srcFilter(path:String) = new sbt.FileFilter {
     def accept(f:File) : Boolean = {
-      f.getPath.contains("net/sf") &&
-      f.getName.endsWith(".java") && !f.getName.endsWith("MetricsDoclet.java")
+      f.getName.endsWith(".jar") || (
+        f.getPath.contains(path) &&
+          f.getName.endsWith(".java") && !f.getName.endsWith("MetricsDoclet.java")
+        )
     }
   }
 
@@ -98,16 +100,22 @@ object PicardBuild extends Build {
     base = file("."),
     settings = buildSettings ++ packSettings ++ Seq(
       description := "Picard",
+      packMain := Map("picard" -> "utgenome.picard.PicardMain"),
+      description := "Picard library",
       javaSource in Compile <<= baseDirectory(_ / "src/java"),
       javaSource in Test <<= baseDirectory(_ / "src/tests/java"),
-      includeFilter in Compile in Sources := srcFilter,
-      includeFilter in Test in Sources := srcFilter,
-      packMain := Map("picard" -> "utgenome.picard.PicardMain"),
-      libraryDependencies ++= testLib
+      //includeFilter in Compile := srcFilter("net/sf"),
+      //includeFilter in Test  := srcFilter("net/sf"),
+      libraryDependencies ++= testLib ++ mainLib
     )
-  ) 
+  )
+
 
   object Dependencies {
+
+    val mainLib = Seq(
+      "org.apache.ant" % "ant" % "1.8.2"
+    )
 
     val testLib = Seq(
       "junit" % "junit" % "4.10" % "provided",
