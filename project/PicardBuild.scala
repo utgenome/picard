@@ -33,9 +33,9 @@ object PicardBuild extends Build {
         Some("releases" at nexus + "service/local/staging/deploy/maven2")
   }
 
-  lazy val defaultJavacOptions = Seq("-encoding", "UTF-8", "-source", "1.5")
+  lazy val defaultJavacOptions = Seq("-encoding", "UTF-8", "-source", "1.6")
 
-  lazy val buildSettings = Defaults.defaultSettings ++ Unidoc.settings ++ releaseSettings ++ Seq[Setting[_]](
+  lazy val buildSettings = Defaults.defaultSettings ++ releaseSettings ++ Seq[Setting[_]](
     organization := "org.utgenome.thirdparty",
     organizationName := "utgenome.org",
     organizationHomepage := Some(new URL("http://utgenome.org/")),
@@ -50,7 +50,7 @@ object PicardBuild extends Build {
     parallelExecution := true,
     parallelExecution in Test := false,
     crossPaths := false,
-    javacOptions in Compile := defaultJavacOptions ++ Seq("-target", "1.5"),
+    javacOptions in Compile := defaultJavacOptions ++ Seq("-target", "1.6"),
     javacOptions in Compile in doc := defaultJavacOptions ++ Seq("-windowtitle", "Picard API", "-linkoffline", "http://docs.oracle.com/javase/6/docs/api/", "http://docs.oracle.com/javase/6/docs/api/"),
     pomExtra := {
       <url>http://utgenome.org/</url>
@@ -86,20 +86,33 @@ object PicardBuild extends Build {
 
   private val dependentScope = "test->test;compile->compile"
 
+  private val srcFilter = new sbt.FileFilter {
+    def accept(f:File) : Boolean = {
+      f.getPath.contains("net/sf") &&
+      f.getName.endsWith(".java") && !f.getName.endsWith("MetricsDoclet.java")
+    }
+  }
+
   lazy val root = Project(
     id = "picard",
     base = file("."),
     settings = buildSettings ++ packSettings ++ Seq(
       description := "Picard",
-      //packMain := Map("silk" -> "xerial.silk.SilkMain")
+      javaSource in Compile <<= baseDirectory(_ / "src/java"),
+      javaSource in Test <<= baseDirectory(_ / "src/tests/java"),
+      includeFilter in Compile in Sources := srcFilter,
+      includeFilter in Test in Sources := srcFilter,
+      packMain := Map("picard" -> "utgenome.picard.PicardMain"),
+      libraryDependencies ++= testLib
     )
   ) 
 
   object Dependencies {
 
     val testLib = Seq(
-      "junit" % "junit" % "4.10" % "test",
-      "org.scalatest" %% "scalatest" % "2.0.M5b" % "test"
+      "junit" % "junit" % "4.10" % "provided",
+      "org.testng" % "testng" % "5.5" % "provided"
+      //"org.scalatest" %% "scalatest" % "2.0.M5b" % "test"
     )
 
 
