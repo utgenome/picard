@@ -4,4 +4,7 @@ target
 .idea
 .idea_modules
 *.stackdump
-
+dist
+classes
+contracts
+testclasses
