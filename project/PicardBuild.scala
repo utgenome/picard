@@ -43,7 +43,9 @@ object PicardBuild extends Build {
     scalaVersion := SCALA_VERSION,
     publishMavenStyle := true,
     publishArtifact in Test := false,
-    publishTo <<= version { v => releaseResolver(v) },
+    publishTo <<= version {
+      v => releaseResolver(v)
+    },
     pomIncludeRepository := {
       _ => false
     },
@@ -51,7 +53,7 @@ object PicardBuild extends Build {
     parallelExecution in Test := false,
     autoScalaLibrary := false,
     crossPaths := false,
-    javacOptions in Compile := defaultJavacOptions ++ Seq("-target", "1.6", "-proc:none"),
+    javacOptions in Compile := defaultJavacOptions ++ Seq("-target", "1.6", "-proc:none", "-Xlint:unchecked"),
     javacOptions in Compile in doc := defaultJavacOptions ++ Seq("-windowtitle", "Picard API", "-linkoffline", "http://docs.oracle.com/javase/6/docs/api/", "http://docs.oracle.com/javase/6/docs/api/"),
     pomExtra := {
       <url>http://utgenome.org/</url>

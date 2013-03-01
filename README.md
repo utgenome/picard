@@ -31,20 +31,6 @@ Picard comamnd-line tools will be installed to `$(HOME)/local/bin`. Configure yo
 
        export PATH = $HOME/local/bin:$PATH
 
-## Usage
-
-Add the folloing settings to your project files:
-### Maven 
-        <dependency>
-            <groupId>org.utgenome.thirdparty</groupId>
-            <artifactId>picard</artifactId>
-            <version>1.86p</version>
-        </dependency>
-
-### Scala (sbt)
-
-    libraryDependencies += "org.utgenome.thirdparty" % "picard" % "1.86p"
-
 ## Development notes
 
 ### Sync with the original SVN repository
