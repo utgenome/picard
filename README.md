@@ -1,21 +1,35 @@
 Picard 
 ===
 
-This project is a clone of Picard library for reading SAM/BAM files <http://picard.sourceforge.net/>. The original Picard is not available from Maven's central repository, so to deploy of Picard's jars to the Maven central, we rewrote the build script in sbt, a build tool for Scala/Java. 
+This project is a clone of Picard library <http://picard.sourceforge.net/>, a useful tool for managing SAM/BAM format data in Java/Scala. Unfortunately, however, Picard has not been available from Maven's central repository. In order to use Picard with Maven and sbt projects, we created a new build script for Picard, and now the Picard library becomes available in Maven and sbt projects.
 
 ## Usage
-
-Add the folloing settings to your project files:
+To use picard, add the folloing settings to your project files:
 ### Maven 
         <dependency>
             <groupId>org.utgenome.thirdparty</groupId>
             <artifactId>picard</artifactId>
-            <version>1.86p</version>
+            <version>1.86.0</version>
         </dependency>
+
 
 ### Scala (sbt)
 
-    libraryDependencies += "org.utgenome.thirdparty" % "picard" % "1.86p"
+    libraryDependencies += "org.utgenome.thirdparty" % "picard" % "1.86.0"
+
+The version number has a suffix like ".0" followed by the original Picard version.
+
+## Install Picard command-line tools
+
+	$ git clone git://github.com/utgenome/picard.git
+	$ cd picard
+	$ bin/sbt pack
+	$ cd target/pack
+	$ make install
+
+Picard comamnd-line tools will be installed to `$(HOME)/local/bin`. Configure your `PATH` environment vaiable in your shell profile (e.g., .bash_profile, .zprofile, etc.):
+
+       export PATH = $HOME/local/bin:$PATH
 
 ## Development notes
 
