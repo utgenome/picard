@@ -1,4 +1,3 @@
-
 libraryDependencies += "com.novocode" % "junit-interface" % "0.10-M2" % "test"
 
 addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.2.0")

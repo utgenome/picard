@@ -43,9 +43,7 @@ object PicardBuild extends Build {
     scalaVersion := SCALA_VERSION,
     publishMavenStyle := true,
     publishArtifact in Test := false,
-    publishTo <<= version {
-      v => releaseResolver(v)
-    },
+    publishTo <<= version { v => releaseResolver(v) },
     pomIncludeRepository := {
       _ => false
     },
@@ -169,7 +167,6 @@ object PicardBuild extends Build {
       "junit" % "junit" % "4.10" % "provided",
       "org.testng" % "testng" % "5.5" % "provided"
     )
-
 
   }
 
