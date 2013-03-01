@@ -114,7 +114,8 @@ object PicardBuild extends Build {
   object Dependencies {
 
     val mainLib = Seq(
-      "org.apache.ant" % "ant" % "1.8.2"
+      "org.apache.ant" % "ant" % "1.8.2",
+      "org.xerial.snappy" % "snappy-java" % "1.0.5-M3"
     )
 
     val testLib = Seq(
