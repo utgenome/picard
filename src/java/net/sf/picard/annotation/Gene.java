@@ -25,7 +25,7 @@ package net.sf.picard.annotation;
 
 import net.sf.picard.util.Interval;
 import net.sf.samtools.util.CoordMath;
-import sun.tools.tree.LengthExpression;
+//import sun.tools.tree.LengthExpression;
 
 import java.util.HashMap;
 import java.util.Iterator;

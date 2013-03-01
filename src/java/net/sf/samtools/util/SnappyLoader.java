@@ -24,7 +24,6 @@
 package net.sf.samtools.util;
 
 import net.sf.samtools.SAMException;
-import org.xerial.snappy.LoadSnappy;
 import org.xerial.snappy.SnappyInputStream;
 
 import java.io.InputStream;
@@ -83,7 +82,7 @@ public class SnappyLoader {
             // Don't try to call any Snappy code until classes have been found via reflection above.
             boolean tmpSnappyAvailable;
             try {
-                if (!LoadSnappy.load()) {
+                if (!org.xerial.snappy.SnappyLoader.isNativeLibraryLoaded()) {
                     if (verbose) System.err.println("Snappy dll failed to load.");
                     tmpSnappyAvailable = false;
                 }
