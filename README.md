@@ -1,7 +1,7 @@
 Picard 
 ===
 
-This project is a clone of Picard library for reading SAM/BAM files <http://picard.sourceforge.net/>. The original Picard is not available from Maven's central repository, so to deploy of Picard's jars to the Maven central, we rewrote the build script in sbt, a build tool for Scala/Java. 
+This project is a clone of Picard library for reading SAM/BAM files <http://picard.sourceforge.net/>. The original Picard is not available from Maven's central repository, so to deploy Picard's jars to the Maven central, we rewrote the build script in sbt, a build tool for Scala/Java. 
 
 ## Usage
 
