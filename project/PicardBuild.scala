@@ -50,7 +50,7 @@ object PicardBuild extends Build {
       _ => false
     },
     parallelExecution := true,
-    parallelExecution in Test := false,
+    //parallelExecution in Test := false,
     autoScalaLibrary := false,
     crossPaths := false,
     javacOptions in Compile := defaultJavacOptions ++ Seq("-target", "1.6", "-proc:none"),
@@ -150,6 +150,7 @@ object PicardBuild extends Build {
       javaSource in Test <<= baseDirectory(_ / "src/tests/java"),
       //includeFilter in Compile := srcFilter("net/sf"),
       //includeFilter in Test  := srcFilter("net/sf"),
+      unmanagedClasspath in Test <+= (baseDirectory) map { bd => Attributed.blank(bd / "src/scripts") },
       libraryDependencies ++= testLib ++ mainLib
     )
   )
