@@ -25,13 +25,11 @@ package net.sf.samtools;
 
 import net.sf.picard.io.IoUtil;
 import net.sf.picard.sam.BuildBamIndex;
-import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Iterator;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
