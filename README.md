@@ -31,6 +31,11 @@ Picard comamnd-line tools will be installed to `$(HOME)/local/bin`. Configure yo
 
        export PATH = $HOME/local/bin:$PATH
 
+## Manual download
+Although I recommend you to use Maven (or sbt, Ivy etc.), you can download picard.jar by hand:
+
+* Maven repository: <http://repo1.maven.org/maven2/org/utgenome/thirdparty/picard/>
+
 ## Development notes
 
 ### Sync with the original SVN repository
