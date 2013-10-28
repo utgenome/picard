@@ -9,7 +9,7 @@ To use picard, add the folloing settings to your project files:
         <dependency>
             <groupId>org.utgenome.thirdparty</groupId>
             <artifactId>picard</artifactId>
-            <version>1.86.0</version>
+            <version>1.101.0</version>
         </dependency>
 
 
