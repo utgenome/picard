@@ -21,6 +21,7 @@ import scala.Some
 import sbt.ExclusionRule
 import xerial.sbt.Pack._
 
+
 object PicardBuild extends Build {
 
   val SCALA_VERSION = "2.10.0"
@@ -53,6 +54,7 @@ object PicardBuild extends Build {
     crossPaths := false,
     javacOptions in Compile := defaultJavacOptions ++ Seq("-target", "1.6", "-proc:none"), //, "-Xlint:unchecked"),
     javacOptions in Compile in doc := defaultJavacOptions ++ Seq("-windowtitle", "Picard API", "-linkoffline", "http://docs.oracle.com/javase/6/docs/api/", "http://docs.oracle.com/javase/6/docs/api/"),
+    //tes    testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-v"),
     pomExtra := {
       <url>http://utgenome.org/</url>
         <licenses>
