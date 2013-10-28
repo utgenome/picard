@@ -166,10 +166,9 @@ object PicardBuild extends Build {
     )
 
     val testLib = Seq(
-      "junit" % "junit" % "4.10" % "provided",
-      "junit" % "junit" % "4.10" % "test",
-      "org.testng" % "testng" % "5.5" % "provided",
-      "org.testng" % "testng" % "5.5" % "test"
+      "junit" % "junit" % "4.10" % "provided"
+      //"junit" % "junit" % "4.10" % "test",
+      //"org.testng" % "testng" % "5.5" % "provided"
     )
   }
 
