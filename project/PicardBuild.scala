@@ -85,7 +85,6 @@ object PicardBuild extends Build {
   import Dependencies._
 
 
-  private val dependentScope = "test->test;compile->compile"
 
   private val srcFilter = new sbt.FileFilter {
     def accept(f:File) : Boolean = {
@@ -155,7 +154,7 @@ object PicardBuild extends Build {
 
     val mainLib = Seq(
       "org.apache.ant" % "ant" % "1.8.4",
-      "org.xerial.snappy" % "snappy-java" % "1.0.5-M3",
+      "org.xerial.snappy" % "snappy-java" % "1.1.0",
       "org.apache.commons" % "commons-jexl" % "2.1.1",
       "commons-logging" % "commons-logging" % "1.1.1",
       "org.apache.ant" % "ant-apache-bcel" % "1.8.4"

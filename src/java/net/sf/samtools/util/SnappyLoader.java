@@ -82,14 +82,9 @@ public class SnappyLoader {
             // Don't try to call any Snappy code until classes have been found via reflection above.
             boolean tmpSnappyAvailable;
             try {
-                if (!org.xerial.snappy.SnappyLoader.isNativeLibraryLoaded()) {
-                    if (verbose) System.err.println("Snappy dll failed to load.");
-                    tmpSnappyAvailable = false;
-                }
-                else {
-                    if (verbose) System.err.println("Snappy stream classes loaded.");
-                    tmpSnappyAvailable = true;
-                }
+		String ver = org.xerial.snappy.Snappy.getNativeLibraryVersion();
+                if (verbose) System.err.println("Snappy stream classes loaded.");
+                tmpSnappyAvailable = true;
             } catch (Error e) {
                 if (e.getClass().equals(snappyErrorClass)) {
                     if (verbose) System.err.println("Snappy dll failed to load: " + e.getMessage());
