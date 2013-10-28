@@ -146,8 +146,8 @@ object PicardBuild extends Build {
       javaSource in Compile <<= baseDirectory(_ / "src/java"),
       javaSource in Test <<= baseDirectory(_ / "src/tests/java"),
       // 
-      //      testFrameworks ~= { tf => tf.filter(_ != TestFrameworks.JUnit).:+(TestFrameworks.JUnit) },
-      //      conflictManager := ConflictManager.strict,
+      //testFrameworks := Seq(new TestFramework("com.novocode.junit.JUnitFramework")),
+      //conflictManager := ConflictManager.strict,
       libraryDependencies ++= testLib ++ mainLib
       includeFilter in Compile in Sources := srcFilter,
       includeFilter in Test in Sources := srcFilter
@@ -166,12 +166,9 @@ object PicardBuild extends Build {
     )
 
     val testLib = Seq(
-      "junit" % "junit" % "4.10" % "provided",
-      "org.testng" % "testng" % "5.5" % "provided"
-    )
-
-    val testLib = Seq(
+      "com.novocode" % "junit-interface" % "0.10" % "test",
       "junit" % "junit" % "4.10" % "provided"
+      //"org.scalatest" % "scalatest_2.10" % "2.0.RC2" % "test"
       //"junit" % "junit" % "4.10" % "test",
       //"org.testng" % "testng" % "5.5" % "provided"
     )
