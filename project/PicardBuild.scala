@@ -87,10 +87,12 @@ object PicardBuild extends Build {
 
   private val dependentScope = "test->test;compile->compile"
 
-  private val srcFilter = new sbt.FileFilter {
-    def accept(f:File) : Boolean = {
-      f.getPath.contains("net/sf") &&
-      f.getName.endsWith(".java") && !f.getName.endsWith("MetricsDoclet.java")
+  private def srcFilter(path: String) = new sbt.FileFilter {
+    def accept(f: File): Boolean = {
+      f.getName.endsWith(".jar") || (
+        f.getPath.contains(path) &&
+          f.getName.endsWith(".java") && !f.getName.endsWith("MetricsDoclet.java")
+        )
     }
   }
 
@@ -145,8 +147,6 @@ object PicardBuild extends Build {
       javaSource in Compile <<= baseDirectory(_ / "src/java"),
       javaSource in Test <<= baseDirectory(_ / "src/tests/java"),
       libraryDependencies ++= testLib ++ mainLib
-      includeFilter in Compile in Sources := srcFilter,
-      includeFilter in Test in Sources := srcFilter
     )
   )
 
@@ -165,8 +165,6 @@ object PicardBuild extends Build {
       "junit" % "junit" % "4.10" % "provided",
       "org.testng" % "testng" % "5.5" % "provided"
     )
-
-
   }
 
 }
