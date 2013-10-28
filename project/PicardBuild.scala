@@ -147,6 +147,9 @@ object PicardBuild extends Build {
       ),
       javaSource in Compile <<= baseDirectory(_ / "src/java"),
       javaSource in Test <<= baseDirectory(_ / "src/tests/java"),
+      // 
+      //      testFrameworks ~= { tf => tf.filter(_ != TestFrameworks.JUnit).:+(TestFrameworks.JUnit) },
+      //      conflictManager := ConflictManager.strict,
       libraryDependencies ++= testLib ++ mainLib
     )
   )
