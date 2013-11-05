@@ -10,13 +10,13 @@ To use picard, add the folloing settings to your project files:
         <dependency>
             <groupId>org.utgenome.thirdparty</groupId>
             <artifactId>picard</artifactId>
-            <version>1.101.0</version>
+            <version>1.102.0</version>
         </dependency>
 
 
 ### Scala (sbt)
 
-    libraryDependencies += "org.utgenome.thirdparty" % "picard" % "1.101.0"
+    libraryDependencies += "org.utgenome.thirdparty" % "picard" % "1.102.0"
 
 The version number has a suffix like ".0" following the original Picard version.
 
