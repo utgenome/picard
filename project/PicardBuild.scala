@@ -51,7 +51,7 @@ object PicardBuild extends Build {
     parallelExecution in Test := false,
     autoScalaLibrary := false,
     crossPaths := false,
-    javacOptions in Compile := defaultJavacOptions ++ Seq("-target", "1.6", "-proc:none", "-Xlint:unchecked"),
+    javacOptions in Compile := defaultJavacOptions ++ Seq("-target", "1.6", "-proc:none"),
     javacOptions in Compile in doc := defaultJavacOptions ++ Seq("-windowtitle", "Picard API", "-linkoffline", "http://docs.oracle.com/javase/6/docs/api/", "http://docs.oracle.com/javase/6/docs/api/"),
     pomExtra := {
       <url>http://utgenome.org/</url>
@@ -161,6 +161,8 @@ object PicardBuild extends Build {
       "org.apache.commons" % "commons-jexl" % "2.1.1",
       "commons-logging" % "commons-logging" % "1.1.1",
       "org.apache.ant" % "ant-apache-bcel" % "1.8.4"
+    )
+
     val testLib = Seq(
       "junit" % "junit" % "4.10" % "provided",
       "org.testng" % "testng" % "5.5" % "provided"
