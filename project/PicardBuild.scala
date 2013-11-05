@@ -161,6 +161,9 @@ object PicardBuild extends Build {
       "org.apache.commons" % "commons-jexl" % "2.1.1",
       "commons-logging" % "commons-logging" % "1.1.1",
       "org.apache.ant" % "ant-apache-bcel" % "1.8.4"
+    val testLib = Seq(
+      "junit" % "junit" % "4.10" % "provided",
+      "org.testng" % "testng" % "5.5" % "provided"
     )
 
     val testLib = Seq(
